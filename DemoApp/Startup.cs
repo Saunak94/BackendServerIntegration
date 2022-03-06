@@ -23,6 +23,7 @@ namespace DemoApp
             services.AddScoped<ISnowflakeConnection, SnowflakeConnectcs>();
             services.AddHttpClient();
             services.AddMvc();
+            //services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,14 +37,15 @@ namespace DemoApp
             //app.UseMvc();
             app.UseRouting();
 
-             app.UseEndpoints(endpoints =>
-             {
-                 endpoints.MapGet("/", async context =>
-                 {
-                     await context.Response.WriteAsync("Hello World!");
-                 });
-             });
-       
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                //endpoints.MapGet("/", async context =>
+                //{
+                //   await context.Response.WriteAsync("Hello World!");
+                //});
+            });
+
         }
     }
 }
